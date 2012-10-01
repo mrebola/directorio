@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @negocio.nombre %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @negocio.descripcion %>
+</p>
+
+<p>
+  <b>Www:</b>
+  <%= @negocio.www %>
+</p>
+
+<p>
+  <b>Localidad:</b>
+  <%= @negocio.localidad %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%= @negocio.telefono %>
+</p>
+
+<p>
+  <b>Horarios:</b>
+  <%= @negocio.horarios %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @negocio.direccion %>
+</p>
+
+
+<%= link_to 'Edit', edit_negocio_path(@negocio) %> |
+<%= link_to 'Back', negocios_path %>
