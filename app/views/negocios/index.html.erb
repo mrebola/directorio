@@ -1,41 +1,21 @@
+Negocios <br>
 
-<h1>Listing negocios</h1>
+<%= form_tag search_negocios_path do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", name: nil %>
+  </p>
 
-<table>
-  <tr>
-    <th>Nombre</th>
-    <th>Descripcion</th>
-    <th>Www</th>
-    <th>Localidad</th>
-    <th>Telefono</th>
-    <th>Horarios</th>
-    <th>Direccion</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @negocios.each do |negocio| %>
-  <tr>
-    <td><%= negocio.nombre %></td>
-    <td><%= negocio.descripcion %></td>
-    <td><%= negocio.www %></td>
-    <td><%= negocio.localidad %></td>
-    <td><%= negocio.telefono %></td>
-    <td><%= negocio.horarios %></td>
-    <td><%= negocio.direccion %></td>
-    <td><%= link_to 'Show', negocio %></td>
-    <td><%= link_to 'Edit', edit_negocio_path(negocio) %></td>
-    <td><%= link_to 'Destroy', negocio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
 <% end %>
-</table>
 
-<br />
+<ul>
+<% for negocio in @negocios %>
+<li>
+  <%= link_to negocio.nombre, negocio_path(negocio) %>
+  <%= link_to "Edit", edit_negocio_path(negocio) %>
+  <%= link_to "Destroy", negocio_path(negocio), method: :delete %>
+</li>
+<% end %>
+</ul>
 
-<%= link_to 'New Negocio', new_negocio_path %>
- <% if current_user %>
-           <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
-        <% else %>
-            <%= link_to('Accesar', new_user_session_path)  %>   
-        <% end %>
+<p> <%= link_to "Agregar Negocio", new_negocio_path %> </p>

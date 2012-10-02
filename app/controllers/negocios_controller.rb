@@ -3,13 +3,24 @@ class NegociosController < ApplicationController
   # GET /negocios.json
    before_filter :authenticate_user!,:only => [:new]
   def index
-    @negocios = Negocio.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @negocios }
-    end
+     ## if params[:search].nil? 
+       ## @negocios = []
+      ##else
+        ##@negocios = Negocio.search(params[:search])
+      ##end
+    # puts params[:search]
+    #@negocios = Negocio.all
+    #respond_to do |format|
+    # format.html # index.html.erb
+    #format.json { render json: @negocios }
+    #end
+    @negocios ||= []
   end
+
+def search
+  @negocios = Negocio.search(params[:search])
+  render :index
+end
 
   # GET /negocios/1
   # GET /negocios/1.json
