@@ -1,6 +1,7 @@
 class NegociosController < ApplicationController
   # GET /negocios
   # GET /negocios.json
+   before_filter :authenticate_user!,:only => [:new]
   def index
     @negocios = Negocio.all
 
@@ -24,6 +25,7 @@ class NegociosController < ApplicationController
   # GET /negocios/new
   # GET /negocios/new.json
   def new
+
     @negocio = Negocio.new
 
     respond_to do |format|

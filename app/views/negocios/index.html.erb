@@ -1,3 +1,4 @@
+
 <h1>Listing negocios</h1>
 
 <table>
@@ -33,3 +34,8 @@
 <br />
 
 <%= link_to 'New Negocio', new_negocio_path %>
+ <% if current_user %>
+           <%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+        <% else %>
+            <%= link_to('Accesar', new_user_session_path)  %>   
+        <% end %>
